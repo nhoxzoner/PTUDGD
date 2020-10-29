@@ -69,3 +69,36 @@ Create Table BillInfo
 	FOREIGN KEY (idDrinks) REFERENCES dbo.Drinks(id),
 )
 GO
+
+INSERT INTO dbo.Account
+	(UserName,
+	DisplayName,
+	Password,
+	Type
+	)
+VALUES ( N'STAFF',--USERNAME
+		N'STAFF',--DISPLAYNAME
+		N'1',--PASSWORD
+		0--TYPE INT
+)
+INSERT INTO dbo.Account
+	(UserName,
+	DisplayName,
+	Password,
+	Type
+	)
+VALUES ( N'admin',--USERNAME
+		N'admin',--DISPLAYNAME
+		N'123',--PASSWORD
+		1--TYPE INT
+)
+
+SELECT * FROM dbo.Account 
+
+CREATE PROC USP_GetAccountByUserName
+@userName nvarchar(100)
+AS
+BEGIN
+	SELECT * FROM dbo.Account WHERE UserName = @userName
+END
+GO
